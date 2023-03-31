@@ -1,28 +1,22 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg bg-custom px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+      <div class="d-flex align-items-center">
+        <img alt="logo" src="https://freesvg.org/img/bird-orange.png" height="45" class="me-3" />
+        <h1 class="text-light">Tweeter</h1>
       </div>
     </router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
-        <li>
+        <!-- <li>
           <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
             About
           </router-link>
-        </li>
+        </li> -->
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <Login />
@@ -45,6 +39,10 @@ a:hover {
   text-decoration: none;
 }
 
+.bg-custom {
+  background-color: #7EDACF;
+}
+
 .nav-link {
   text-transform: uppercase;
 }
@@ -60,5 +58,4 @@ a:hover {
     height: 64px;
   }
 }
-
 </style>

@@ -1,13 +1,17 @@
 <template>
   <header>
-    <Navbar />
   </header>
-  <main>
-    <router-view />
+  <main class="container-fluid overflow-hidden">
+    <section class="row">
+      <div class="col-2">
+        <!-- insert sidebar here -->
+      </div>
+      <div class="col-10 pe-0">
+        <Navbar />
+        <router-view />
+      </div>
+    </section>
   </main>
-   <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
-  </footer>
 </template>
 
 <script>
@@ -27,7 +31,7 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
-:root{
+:root {
   --main-height: calc(100vh - 32px - 64px);
 }
 
