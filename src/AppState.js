@@ -14,5 +14,9 @@ export const AppState = reactive({
   promos: [],
 
   /** @type {import('./models/Account.js').Profile|null} */
-  activeProfile: null
+  activeProfile: null,
+
+  nextPage: null,
+  previousPage: null,
+
 })
