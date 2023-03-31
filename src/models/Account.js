@@ -10,6 +10,7 @@ export class Profile {
     this.coverImg = data.coverImg
     this.graduated = data.graduated || false
     this.resume = data.resume
+    this.class = data.class
 
   }
 }

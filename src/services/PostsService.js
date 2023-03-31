@@ -26,6 +26,16 @@ class PostsService {
     AppState.previousPage = res.data.newer
     window.scrollTo(0, 0)
   }
+
+  async likePost(postId) {
+    const res = await api.post(`/api/posts/${postId}/like`)
+    logger.log('[LIKED POST]', res.data)
+    AppState.likeIds = res.data.likeIds
+    const index = AppState.posts.findIndex(p => p.id == postId)
+    const foundPost = AppState.posts[index]
+    AppState.posts.splice(index, 1, new Post(res.data))
+    logger.log('[AFTER SPLICE]', AppState.posts)
+  }
 }
 
 export const postsService = new PostsService()

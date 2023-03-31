@@ -19,7 +19,8 @@
         <img v-if="p.imgUrl" :src="p.imgUrl" class="post-image">
       </div>
       <div class="col-12 pe-4 d-flex justify-content-end">
-        <h6 class="mt-2 me-1">{{ p.likes.length }}</h6> <i class="mdi mdi-heart fs-3"></i>
+        <h6 class="mt-2 me-1">{{ p.likes.length }}</h6> <i :class="{ 'text-danger': p.likeIds.includes(userId) }"
+          class="mdi mdi-heart fs-3 like-button" @click="likePost(p.id)"></i>
       </div>
     </section>
   </div>
@@ -27,7 +28,12 @@
 
 
 <script>
+import { computed } from "vue";
+import { AppState } from "../AppState.js";
 import { Post } from "../models/Post.js";
+import { postsService } from "../services/PostsService.js";
+import { logger } from "../utils/Logger.js";
+import Pop from "../utils/Pop.js";
 
 export default {
   props: {
@@ -37,7 +43,19 @@ export default {
     }
   },
   setup() {
-    return {}
+
+    return {
+      likes: computed(() => AppState.likeIds),
+      userId: computed(() => AppState.account.id),
+      async likePost(postId) {
+        try {
+          await postsService.likePost(postId)
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error.message)
+        }
+      }
+    }
   }
 }
 </script>
@@ -52,15 +70,20 @@ export default {
 
 .post-card {
   margin: 1em;
-  // padding: 1em;
+  margin-left: 2.5em;
   background-color: white;
   border-radius: 1px;
-  filter: drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(0px 0px 2px black);
 }
 
 .post-image {
   width: 100%;
   margin-bottom: 1em;
   margin-top: 1em;
+}
+
+.like-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 </style>

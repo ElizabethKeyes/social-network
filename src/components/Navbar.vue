@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-custom px-3">
+  <nav class="navbar navbar-expand-lg nav-custom px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center">
         <img alt="logo" src="https://freesvg.org/img/bird-orange.png" height="45" class="me-3" />
@@ -39,8 +39,9 @@ a:hover {
   text-decoration: none;
 }
 
-.bg-custom {
+.nav-custom {
   background-color: #7EDACF;
+  margin-bottom: 3em;
 }
 
 .nav-link {
