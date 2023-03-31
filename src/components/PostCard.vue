@@ -47,9 +47,14 @@ export default {
     return {
       likes: computed(() => AppState.likeIds),
       userId: computed(() => AppState.account.id),
+
       async likePost(postId) {
         try {
-          await postsService.likePost(postId)
+          if (AppState.account.id) {
+            await postsService.likePost(postId)
+          } else {
+            Pop.error('You must be logged in to like posts')
+          }
         } catch (error) {
           logger.log(error)
           Pop.error(error.message)
