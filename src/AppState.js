@@ -12,4 +12,7 @@ export const AppState = reactive({
 
   /** @type {import('./models/Promo.js').Promo[]} */
   promos: [],
+
+  /** @type {import('./models/Account.js').Profile|null} */
+  activeProfile: null
 })

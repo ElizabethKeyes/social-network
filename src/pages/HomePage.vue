@@ -5,7 +5,7 @@
     </div>
     <div class="col-3 promo-col">
       <div class="div d-flex justify-content-end" v-for="promo in promos" :key="promo.title">
-        <img :src="promo.tall" :alt="promo.title" class="promos">
+        <Promos :promo="promo" />
       </div>
     </div>
   </section>
@@ -20,6 +20,8 @@ import { onMounted } from "vue";
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState.js";
 import PostCard from "../components/PostCard.vue";
+import Promos from "../components/Promos.vue";
+
 
 export default {
   setup() {
@@ -50,7 +52,7 @@ export default {
       promos: computed(() => AppState.promos)
     };
   },
-  components: { PostCard }
+  components: { PostCard, Promos }
 }
 </script>
 
@@ -75,10 +77,7 @@ export default {
   }
 }
 
-.promos {
-  width: 80%;
-  margin-bottom: 2em;
-}
+
 
 .promo-col {
   position: absolute;
