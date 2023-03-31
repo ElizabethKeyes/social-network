@@ -9,8 +9,10 @@
       </div>
     </div>
     <div class="col-9 d-flex justify-content-around mb-4 mt-3">
-      <button @click="changePage(previousPage)" class="btn btn-outline-dark">Previous Page</button>
-      <button @click="changePage(nextPage)" class="btn btn-outline-dark">Next Page</button>
+      <button :class="{ disabled: previousPage == null }" @click="changePage(previousPage)"
+        class="btn btn-outline-dark">Previous Page</button>
+      <button :class="{ disabled: nextPage == null }" @click="changePage(nextPage)" class="btn btn-outline-dark">Next
+        Page</button>
     </div>
   </section>
 </template>

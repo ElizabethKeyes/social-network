@@ -10,6 +10,12 @@
         <Promos :promo="promo" />
       </div>
     </div>
+    <div class="col-9 d-flex justify-content-around mb-4 mt-3">
+      <button :class="{ disabled: previousPage == null }" @click="changePage(previousPage)"
+        class="btn btn-outline-dark">Previous Page</button>
+      <button :class="{ disabled: nextPage == null }" @click="changePage(nextPage)" class="btn btn-outline-dark">Next
+        Page</button>
+    </div>
   </section>
 </template>
 
@@ -59,7 +65,18 @@ export default {
       route,
       promos: computed(() => AppState.promos),
       profile: computed(() => AppState.activeProfile),
-      posts: computed(() => AppState.posts)
+      posts: computed(() => AppState.posts),
+      nextPage: computed(() => AppState.nextPage),
+      previousPage: computed(() => AppState.previousPage),
+
+      async changePage(url) {
+        try {
+          await postsService.changePage(url)
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error.message)
+        }
+      }
     };
   },
   components: { Promos, PostCard }

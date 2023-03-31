@@ -9,13 +9,14 @@ class PostsService {
     AppState.posts = res.data.posts.map(p => new Post(p))
     AppState.nextPage = res.data.older
     AppState.previousPage = res.data.newer
-    logger.log('[ALL POSTS]', res.data)
-    logger.log('[ALL CLASSED POSTS]', AppState.posts)
   }
 
   async getPostsByProfileId(profileId) {
     const res = await api.get('/api/posts', { params: { creatorId: profileId } })
     AppState.posts = res.data.posts.map(p => new Post(p))
+    AppState.nextPage = res.data.older
+    AppState.previousPage = res.data.newer
+    logger.log('[ALL POSTS FROM PROFILE]', res.data)
   }
 
   async changePage(url) {
