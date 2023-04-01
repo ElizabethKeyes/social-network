@@ -18,8 +18,11 @@
         <h4>{{ profile?.name }}</h4>
         <p>{{ profile?.bio }}</p>
       </div>
+      <button v-if="profile?.id == account?.id" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        class="btn btn-outline-light">Edit</button>
     </section>
   </div>
+  <EditProfileModal />
 </template>
 
 
@@ -28,6 +31,7 @@ import { computed } from "vue";
 import { AppState } from "../AppState.js";
 import { useRouter } from "vue-router";
 import { logger } from "../utils/Logger.js";
+import EditProfileModal from './EditProfileModal.vue'
 
 export default {
   setup() {
@@ -35,12 +39,14 @@ export default {
     return {
       router,
       profile: computed(() => AppState.activeProfile),
+      account: computed(() => AppState.account),
 
       goToGithub(url) {
         router.currentRoute = url
       }
     }
-  }
+  },
+  components: { EditProfileModal }
 }
 </script>
 
@@ -52,7 +58,7 @@ export default {
   margin: 1em;
   margin-left: 2.5em;
   min-height: 45vh;
-  margin-bottom: 3em;
+  margin-bottom: 1.25em;
 }
 
 .cover-img {
@@ -71,6 +77,8 @@ export default {
   left: 20px;
   height: 15vh;
   width: 15vh;
+  object-fit: cover;
+  object-position: center;
 }
 
 .graduate-icon {
@@ -95,5 +103,20 @@ export default {
 .socials-col {
   min-height: 6vh;
   padding-top: .25em
+}
+
+.btn-outline-light {
+  color: #39C4C6;
+  border: solid 1px #39C4C6;
+  margin-right: 1em;
+  width: 5vw;
+  position: absolute;
+  bottom: 10px;
+  right: -5px
+}
+
+.btn-outline-light:hover {
+  color: white;
+  background-color: #39C4C6;
 }
 </style>

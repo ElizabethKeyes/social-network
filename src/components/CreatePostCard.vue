@@ -71,6 +71,7 @@ export default {
   filter: drop-shadow(0px 0px 7px rgb(91, 89, 89));
   margin: 1em;
   margin-left: 2.5em;
+  margin-bottom: 2.5em
 }
 
 .profile-pic {

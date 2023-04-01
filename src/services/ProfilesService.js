@@ -9,6 +9,11 @@ class ProfilesService {
     AppState.activeProfile = new Profile(res.data)
     window.scrollTo(0, 0)
   }
+
+  async updateProfileInfo(profileData) {
+    const res = await api.put('/account', profileData)
+    logger.log(res.data)
+  }
 }
 
 export const profilesService = new ProfilesService()

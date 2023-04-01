@@ -2,9 +2,9 @@
   <section class="row">
     <div class="col-9">
       <ProfileCard />
+      <CreatePostCard v-if="profile?.id == user?.id" />
       <div class="div" v-for="p in posts" :key="p.id">
         <PostCard :p="p" />
-        <CreatePostCard v-if="profile?.id == user?.id" />
       </div>
     </div>
     <div class="col-3 promo-col">
