@@ -36,6 +36,16 @@ class PostsService {
     AppState.posts.splice(index, 1, new Post(res.data))
     logger.log('[AFTER SPLICE]', AppState.posts)
   }
+
+  async createPost(postData) {
+    logger.log('[POSTDATA]', postData)
+    const res = await api.post(`api/posts`, postData)
+    logger.log(res.data)
+  }
+
+  togglePhotoInput() {
+    AppState.photoInput = !AppState.photoInput
+  }
 }
 
 export const postsService = new PostsService()

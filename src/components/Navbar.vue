@@ -40,7 +40,7 @@ a:hover {
 }
 
 .nav-custom {
-  background-color: #7EDACF;
+  background-image: linear-gradient(to right, #39C4C6, #c4eff0 80%, #39C4C6);
   margin-bottom: 3em;
 }
 

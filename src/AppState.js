@@ -19,4 +19,6 @@ export const AppState = reactive({
   nextPage: null,
   previousPage: null,
   likeIds: [],
+  photoInput: false,
+
 })
