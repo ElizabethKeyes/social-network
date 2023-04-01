@@ -104,11 +104,12 @@ export default {
   }
 }
 
-
-
 .promo-col {
+  padding-left: 0px;
+  padding-right: 20px;
   position: absolute;
   top: 100px;
-  right: 12px
+  right: 12px;
+  width: 23vw
 }
 </style>

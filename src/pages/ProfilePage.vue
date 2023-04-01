@@ -1,8 +1,10 @@
 <template>
   <section class="row">
     <div class="col-9">
+      <ProfileCard />
       <div class="div" v-for="p in posts" :key="p.id">
         <PostCard :p="p" />
+        <CreatePostCard v-if="profile?.id == user?.id" />
       </div>
     </div>
     <div class="col-3 promo-col">
@@ -30,7 +32,9 @@ import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 import { useRoute } from "vue-router";
 import PostCard from "../components/PostCard.vue";
+import ProfileCard from "../components/ProfileCard.vue";
 import { postsService } from "../services/PostsService.js";
+import CreatePostCard from "../components/CreatePostCard.vue";
 
 export default {
   setup() {
@@ -68,6 +72,7 @@ export default {
       posts: computed(() => AppState.posts),
       nextPage: computed(() => AppState.nextPage),
       previousPage: computed(() => AppState.previousPage),
+      user: computed(() => AppState.account),
 
       async changePage(url) {
         try {
@@ -79,7 +84,7 @@ export default {
       }
     };
   },
-  components: { Promos, PostCard }
+  components: { Promos, PostCard, ProfileCard, CreatePostCard }
 }
 </script>
 
@@ -91,8 +96,11 @@ export default {
 }
 
 .promo-col {
+  padding-left: 0px;
+  padding-right: 20px;
   position: absolute;
   top: 100px;
-  right: 12px
+  right: 12px;
+  width: 23vw
 }
 </style>

@@ -1,10 +1,12 @@
 <template>
   <div class="sidebar-card">
     <div class="d-flex justify-content-center">
-      <img :src="user.picture" :alt="'a photo of ' + user.name" class="profile-pic">
+      <!-- <router-link :to="{ name: 'Profile', params: { profileId: user.id } }"> -->
+      <img :src="user?.picture" :alt="'a photo of ' + user?.name" class="profile-pic">
+      <!-- </router-link> -->
     </div>
-    <h5 v-if="user.class">{{ user.class }}</h5>
-    <h4 class="fw-bold mb-3">{{ user.name }}</h4>
+    <h5 v-if="user?.class">{{ user?.class }}</h5>
+    <h4 class="fw-bold mb-3">{{ user?.name }}</h4>
     <h6><i class="mdi mdi-github fs-4 me-2"></i>Github</h6>
     <h6><i class="mdi mdi-linkedin fs-4 me-2"></i>LinkedIn</h6>
     <h6><i class="mdi mdi-file-document fs-4 me-2"></i>Resume</h6>
@@ -30,7 +32,7 @@ export default {
 <style lang="scss" scoped>
 .sidebar-card {
   background-color: white;
-  filter: drop-shadow(0px 0px 2px black);
+  filter: drop-shadow(0px 0px 7px rgb(91, 89, 89));
   padding: 1em;
   padding-top: 5em;
   min-height: 75vh;

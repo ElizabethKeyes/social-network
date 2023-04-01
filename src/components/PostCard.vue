@@ -91,8 +91,7 @@ export default {
   margin: 1em;
   margin-left: 2.5em;
   background-color: white;
-  border-radius: 1px;
-  filter: drop-shadow(0px 0px 2px black);
+  filter: drop-shadow(0px 0px 7px rgb(91, 89, 89));
   position: relative
 }
 
