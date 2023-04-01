@@ -8,11 +8,10 @@
         <img :src="profile?.picture" :alt="'a photo of ' + profile?.name" class="profile-pic">
         <i v-if="profile?.graduated" class="mdi mdi-account-school text-secondary fs-3 graduate-icon"></i>
       </div>
-      <div class="col-12 d-flex justify-content-end pe-5">
-        <button class="btn" type="button" @click="goToGithub(profile?.github)"><i
-            class="mdi mdi-github fs-2"></i></button>
-        <button class="btn" type="button"><i class="mdi mdi-linkedin fs-2"></i></button>
-        <button class="btn" type="button"><i class="mdi mdi-file-document fs-2"></i></button>
+      <div class="col-12 d-flex justify-content-end pe-5 socials-col">
+        <a v-if="profile?.github" :href="profile?.github"><i class="me-2 text-dark mdi mdi-github fs-2"></i></a>
+        <a v-if="profile?.linkedin" :href="profile?.linkedin"><i class="me-2 text-dark mdi mdi-linkedin fs-2"></i></a>
+        <a v-if="profile?.resume" :href="profile?.resume"><i class="me-2 text-dark mdi mdi-file-document fs-2"></i></a>
       </div>
       <div class="col-11 card-content">
         <h5 class="mb-0">{{ profile?.class }}</h5>
@@ -91,5 +90,10 @@ export default {
   padding-right: 2.5em;
   padding-bottom: 2.5em;
 
+}
+
+.socials-col {
+  min-height: 6vh;
+  padding-top: .25em
 }
 </style>

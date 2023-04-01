@@ -2,15 +2,16 @@
   <div class="sidebar-card">
     <div class="d-flex justify-content-center">
       <!-- <router-link :to="{ name: 'Profile', params: { profileId: user.id } }"> -->
-      <img :src="user?.picture" :alt="'a photo of ' + user?.name" class="profile-pic">
+      <img :src="account?.picture" :alt="'a photo of ' + account?.name" class="profile-pic">
       <!-- </router-link> -->
     </div>
-    <h5 v-if="user?.class">{{ user?.class }}</h5>
-    <h4 class="fw-bold mb-3">{{ user?.name }}</h4>
-    <h6><i class="mdi mdi-github fs-4 me-2"></i>Github</h6>
-    <h6><i class="mdi mdi-linkedin fs-4 me-2"></i>LinkedIn</h6>
-    <h6><i class="mdi mdi-file-document fs-4 me-2"></i>Resume</h6>
-
+    <h5 v-if="account?.class">{{ account?.class }}</h5>
+    <h4 class="fw-bold mb-3">{{ account?.name }}</h4>
+    <div class="d-flex flex-column">
+      <a :href="account?.github" class="text-dark"><i class="mdi mdi-github fs-4 me-2"></i>Github</a>
+      <a :href="account?.linkedin" class="text-dark"><i class="mdi mdi-linkedin fs-4 me-2"></i>LinkedIn</a>
+      <a :href="account?.resume" class="text-dark"><i class="mdi mdi-file-document fs-4 me-2"></i>Resume</a>
+    </div>
   </div>
 </template>
 
@@ -22,7 +23,7 @@ import { AppState } from "../AppState.js";
 export default {
   setup() {
     return {
-      user: computed(() => AppState.account)
+      account: computed(() => AppState.account)
     }
   }
 }
