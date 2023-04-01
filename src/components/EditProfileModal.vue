@@ -49,7 +49,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-light">Submit Changes</button>
+            <button type="submit" class="btn btn-light" data-bs-dismiss="modal">Submit Changes</button>
           </div>
         </div>
       </form>
@@ -110,7 +110,9 @@ export default {
   width: 10vh;
   position: absolute;
   top: 85px;
-  left: 25px
+  left: 25px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .account-name {

@@ -7,7 +7,7 @@
       <div class="dropdown dropstart my-2 my-lg-0">
         <div type="button" class=" border-0 selectable no-select" data-bs-toggle="dropdown" aria-expanded="false">
           <div v-if="account.picture || user.picture">
-            <img :src="account.picture || user.picture" alt="account photo" height="40" class="rounded" />
+            <img :src="account.picture || user.picture" alt="account photo" height="40" class="account-icon" />
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-lg-left p-0" aria-labelledby="authDropdown">
@@ -48,4 +48,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.account-icon {
+  border-radius: 100%;
+  height: 5vh;
+  width: 5vh;
+  object-fit: cover;
+  object-position: center;
+}
+</style>

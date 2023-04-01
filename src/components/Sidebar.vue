@@ -45,5 +45,7 @@ export default {
   width: 15vh;
   border-radius: 100%;
   margin-bottom: 2em;
+  object-position: center;
+  object-fit: cover;
 }
 </style>

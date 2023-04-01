@@ -1,12 +1,12 @@
 <template>
   <div class="new-post-card row">
-    <div class="col-2 ps-4 pt-3 d-flex justify-content-center">
+    <div class="col-2 px-0 pt-3 d-flex justify-content-center">
       <img :src="user.picture" :alt="'a photo of ' + user.name" class="profile-pic">
     </div>
     <div class="col-10">
       <form @submit.prevent="createPost()">
-        <textarea v-model="editable.body" placeholder="Share what's happening" class="form-control my-text-area"
-          rows="10"></textarea>
+        <textarea v-model="editable.body" placeholder="Share what's happening" class="form-control my-text-area" rows="10"
+          required maxlength="1000"></textarea>
         <input type="url" placeholder="Paste URL here" class="form-control photo-input" v-model="editable.imgUrl"
           v-if="photoInput == true">
         <div class="d-flex justify-content-between mb-2">
@@ -79,6 +79,8 @@ export default {
   width: 10vh;
   border-radius: 100%;
   margin-top: .75em;
+  object-position: center;
+  object-fit: cover;
 }
 
 .my-text-area {

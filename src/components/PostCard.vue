@@ -50,6 +50,8 @@ export default {
       likes: computed(() => AppState.likeIds),
       userId: computed(() => AppState.account.id),
       posts: computed(() => AppState.posts),
+      profile: computed(() => AppState.activeProfile),
+      account: computed(() => AppState.account),
 
       async likePost(postId) {
         try {
@@ -84,7 +86,9 @@ export default {
 .profile-pic {
   height: 10vh;
   width: 10vh;
-  border-radius: 100%
+  border-radius: 100%;
+  object-position: center;
+  object-fit: cover
 }
 
 .post-card {

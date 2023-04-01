@@ -14,8 +14,8 @@
         <a v-if="profile?.resume" :href="profile?.resume"><i class="me-2 text-dark mdi mdi-file-document fs-2"></i></a>
       </div>
       <div class="col-11 card-content">
-        <h5 class="mb-0">{{ profile?.class }}</h5>
-        <h4>{{ profile?.name }}</h4>
+        <h6 class="mb-0">{{ profile?.class }}</h6>
+        <h3>{{ profile?.name }}</h3>
         <p>{{ profile?.bio }}</p>
       </div>
       <button v-if="profile?.id == account?.id" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
