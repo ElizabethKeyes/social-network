@@ -1,16 +1,20 @@
 <template>
   <div class="sidebar-card">
     <div class="d-flex justify-content-center">
-      <!-- <router-link :to="{ name: 'Profile', params: { profileId: user.id } }"> -->
-      <img :src="account?.picture" :alt="'a photo of ' + account?.name" class="profile-pic">
-      <!-- </router-link> -->
+      <h6 v-if="!account?.id">Please login or create an account to access all features</h6>
+      <router-link :to="{ name: 'Profile', params: { profileId: account?.id } }">
+        <img v-if="account?.picture" :src="account?.picture" :alt="'a photo of ' + account?.name" class="profile-pic">
+      </router-link>
     </div>
     <h5 v-if="account?.class">{{ account?.class }}</h5>
     <h4 class="fw-bold mb-3">{{ account?.name }}</h4>
     <div class="d-flex flex-column">
-      <a :href="account?.github" class="text-dark"><i class="mdi mdi-github fs-4 me-2"></i>Github</a>
-      <a :href="account?.linkedin" class="text-dark"><i class="mdi mdi-linkedin fs-4 me-2"></i>LinkedIn</a>
-      <a :href="account?.resume" class="text-dark"><i class="mdi mdi-file-document fs-4 me-2"></i>Resume</a>
+      <a v-if="account?.github" :href="account?.github" class="text-dark"><i
+          class="mdi mdi-github fs-4 me-2"></i>Github</a>
+      <a v-if="account?.linkedin" :href="account?.linkedin" class="text-dark"><i
+          class="mdi mdi-linkedin fs-4 me-2"></i>LinkedIn</a>
+      <a v-if="account?.resume" :href="account?.resume" class="text-dark"><i
+          class="mdi mdi-file-document fs-4 me-2"></i>Resume</a>
     </div>
   </div>
 </template>
@@ -23,7 +27,8 @@ import { AppState } from "../AppState.js";
 export default {
   setup() {
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      activeProfile: computed(() => AppState.activeProfile)
     }
   }
 }

@@ -23,7 +23,7 @@
 
 
 <script>
-import { computed, onMounted } from "vue";
+import { computed, onMounted, onUpdated, watchEffect } from "vue";
 import Promos from "../components/Promos.vue";
 import { AppState } from "../AppState.js";
 import { promosService } from "../services/PromosService.js";
@@ -65,6 +65,12 @@ export default {
         getProfileById(),
         getPostsByProfileId()
     })
+
+    onUpdated(() => {
+      getProfileById(),
+        getPostsByProfileId()
+    })
+
     return {
       route,
       promos: computed(() => AppState.promos),
