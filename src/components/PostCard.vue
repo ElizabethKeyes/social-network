@@ -7,6 +7,8 @@
         </router-link>
       </div>
       <div class="col-10 ps-4 d-flex flex-column justify-content-around">
+        <button v-if="userId == p.creator.id" @click="deletePost(p.id)" class="btn delete-button" title="Delete Post"
+          type="button"><i class="mdi mdi-delete-outline text-danger fs-4"></i></button>
         <h4>{{ p.creator.name }}</h4>
         <h6 class="text-dark lighten-50">{{ p.createdAt }}<span v-if="p.creator.graduated"><i
               class="mdi mdi-account-school ms-2"></i></span>
@@ -47,6 +49,7 @@ export default {
     return {
       likes: computed(() => AppState.likeIds),
       userId: computed(() => AppState.account.id),
+      posts: computed(() => AppState.posts),
 
       async likePost(postId) {
         try {
@@ -54,6 +57,17 @@ export default {
             await postsService.likePost(postId)
           } else {
             Pop.error('You must be logged in to like posts')
+          }
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error.message)
+        }
+      },
+
+      async deletePost(postId) {
+        try {
+          if (await Pop.confirm("Are you sure you'd like to delete this post?", "This can't be undone!", "Yes, I'm sure", "warning")) {
+            await postsService.deletePost(postId)
           }
         } catch (error) {
           logger.log(error)
@@ -79,6 +93,7 @@ export default {
   background-color: white;
   border-radius: 1px;
   filter: drop-shadow(0px 0px 2px black);
+  position: relative
 }
 
 .post-image {
@@ -90,5 +105,11 @@ export default {
 .like-button:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+
+.delete-button {
+  position: absolute;
+  right: 0px;
+  top: 0px;
 }
 </style>

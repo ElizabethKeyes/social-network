@@ -109,6 +109,6 @@ export default {
 .promo-col {
   position: absolute;
   top: 100px;
-  right: 0px
+  right: 12px
 }
 </style>

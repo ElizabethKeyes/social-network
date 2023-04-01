@@ -36,11 +36,14 @@ export default {
       editable,
       user: computed(() => AppState.account),
       photoInput: computed(() => AppState.photoInput),
+      posts: computed(() => AppState.posts),
 
       async createPost() {
         try {
           const postData = editable.value
+          const form = window.event.target
           await postsService.createPost(postData)
+          form.reset()
         } catch (error) {
           logger.log(error)
           Pop.error(error.message)

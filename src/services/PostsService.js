@@ -40,11 +40,17 @@ class PostsService {
   async createPost(postData) {
     logger.log('[POSTDATA]', postData)
     const res = await api.post(`api/posts`, postData)
-    logger.log(res.data)
+    AppState.posts.unshift(new Post(res.data))
   }
 
   togglePhotoInput() {
     AppState.photoInput = !AppState.photoInput
+  }
+
+  async deletePost(postId) {
+    const res = await api.delete(`/api/posts/${postId}`)
+    AppState.posts = AppState.posts.filter(p => p.id != postId)
+
   }
 }
 
