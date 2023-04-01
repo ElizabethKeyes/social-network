@@ -6,6 +6,7 @@
         <h1 class="text-light">Tweeter</h1>
       </div>
     </router-link>
+    <Searchbar />
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -26,11 +27,12 @@
 
 <script>
 import Login from './Login.vue'
+import Searchbar from "./Searchbar.vue";
 export default {
   setup() {
     return {}
   },
-  components: { Login }
+  components: { Login, Searchbar }
 }
 </script>
 
@@ -58,5 +60,10 @@ a:hover {
   nav {
     height: 64px;
   }
+}
+
+.search-input {
+  position: absolute;
+  right: 75px
 }
 </style>

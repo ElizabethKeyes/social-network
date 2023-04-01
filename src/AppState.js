@@ -20,5 +20,7 @@ export const AppState = reactive({
   previousPage: null,
   likeIds: [],
   photoInput: false,
+  searchedProfiles: [],
+
 
 })

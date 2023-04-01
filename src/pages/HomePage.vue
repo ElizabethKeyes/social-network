@@ -7,7 +7,7 @@
       <PostCard :p="p" />
     </div>
     <div class="col-3 promo-col">
-      <div class="div d-flex justify-content-end" v-for="promo in promos" :key="promo.title">
+      <div class="d-flex justify-content-end" v-for="promo in promos" :key="promo.title">
         <Promos :promo="promo" />
       </div>
     </div>

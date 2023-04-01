@@ -1,7 +1,9 @@
 <template>
   <div class="new-post-card row">
     <div class="col-2 px-0 pt-3 d-flex justify-content-center">
-      <img :src="user.picture" :alt="'a photo of ' + user.name" class="profile-pic">
+      <router-link :to="{ name: 'Profile', params: { profileId: user.id } }">
+        <img :src="user.picture" :alt="'a photo of ' + user.name" class="profile-pic">
+      </router-link>
     </div>
     <div class="col-10">
       <form @submit.prevent="createPost()">

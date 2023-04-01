@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js"
+import { Profile } from "../models/Account.js"
 import { Post } from "../models/Post.js"
 import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
@@ -50,7 +51,15 @@ class PostsService {
   async deletePost(postId) {
     const res = await api.delete(`/api/posts/${postId}`)
     AppState.posts = AppState.posts.filter(p => p.id != postId)
+  }
 
+  async searchContent(query) {
+    const res = await api.get(`/api/posts?query=${query}`)
+    const res2 = await api.get(`/api/profiles?query=${query}`)
+    AppState.searchedProfiles = res2.data.map(p => new Profile(p))
+    AppState.posts = res.data.posts.map(p => new Post(p))
+    logger.log('[SEARCHED POSTS]', AppState.posts)
+    logger.log('[SEARCHED PROFILES]', AppState.searchedProfiles)
   }
 }
 
