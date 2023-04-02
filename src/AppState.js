@@ -21,6 +21,6 @@ export const AppState = reactive({
   likeIds: [],
   photoInput: false,
   searchedProfiles: [],
-
+  postLikers: {}
 
 })

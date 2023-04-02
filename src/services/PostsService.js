@@ -61,6 +61,7 @@ class PostsService {
     logger.log('[SEARCHED POSTS]', AppState.posts)
     logger.log('[SEARCHED PROFILES]', AppState.searchedProfiles)
   }
+
 }
 
 export const postsService = new PostsService()

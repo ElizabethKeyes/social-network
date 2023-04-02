@@ -92,7 +92,7 @@ export default {
 
 <style lang="scss" scoped>
 .promos {
-  width: 80%;
+  width: 100%;
   margin-bottom: 2em;
 }
 

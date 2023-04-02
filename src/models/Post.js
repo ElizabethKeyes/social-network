@@ -10,5 +10,6 @@ export class Post {
     this.likeIds = data.likeIds
     this.createdAt = new Date(data.createdAt).toLocaleDateString()
     this.body = data.body
+    this.likeNames = []
   }
 }

@@ -41,9 +41,6 @@ export default {
       profile: computed(() => AppState.activeProfile),
       account: computed(() => AppState.account),
 
-      goToGithub(url) {
-        router.currentRoute = url
-      }
     }
   },
   components: { EditProfileModal }

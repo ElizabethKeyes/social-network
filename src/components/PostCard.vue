@@ -22,7 +22,7 @@
       </div>
       <div class="col-12 pe-4 d-flex justify-content-end">
         <h6 class="mt-2 me-1">{{ p.likes.length }}</h6> <i :class="{ 'text-danger': p.likeIds.includes(userId) }"
-          class="mdi mdi-heart fs-3 like-button" @click="likePost(p.id)"></i>
+          class="mdi mdi-heart fs-3 like-button" @click="likePost(p.id)" :title="p?.likeNames"></i>
       </div>
     </section>
   </div>
@@ -30,7 +30,7 @@
 
 
 <script>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import { Post } from "../models/Post.js";
 import { postsService } from "../services/PostsService.js";
@@ -44,19 +44,33 @@ export default {
       required: true
     }
   },
-  setup() {
+  setup(props) {
 
+
+    function getLikeNames() {
+      const likeNames = []
+      for (let i = 0; i < props.p.likes.length; i++) {
+        likeNames.push(' ' + props.p.likes[i].name)
+      }
+      props.p.likeNames = likeNames
+    }
+
+    onMounted(() => {
+      getLikeNames()
+    })
     return {
       likes: computed(() => AppState.likeIds),
       userId: computed(() => AppState.account.id),
       posts: computed(() => AppState.posts),
       profile: computed(() => AppState.activeProfile),
       account: computed(() => AppState.account),
+      postLikers: computed(() => AppState.postLikers),
 
       async likePost(postId) {
         try {
           if (AppState.account.id) {
             await postsService.likePost(postId)
+            getLikeNames()
           } else {
             Pop.error('You must be logged in to like posts')
           }
