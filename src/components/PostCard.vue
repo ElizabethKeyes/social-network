@@ -7,8 +7,21 @@
         </router-link>
       </div>
       <div class="col-10 mt-3 ps-4 d-flex flex-column justify-content-around">
-        <button v-if="userId == p.creator.id" @click="deletePost(p.id)" class="btn delete-button" title="Delete Post"
-          type="button"><i class="mdi mdi-delete-outline text-danger fs-4"></i></button>
+
+
+        <div v-if="userId == p.creator.id" class="dropdown">
+          <button class="btn btn-dark-outline dropdown-toggle delete-button" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            ...
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li @click="deletePost(p.id)" class="dropdown-item"><i
+                class="mdi mdi-delete-outline text-danger me-2"></i>Delete
+              Post</li>
+          </ul>
+        </div>
+
+
         <h4>{{ p.creator.name }}</h4>
         <h6 class="text-dark lighten-50">{{ p.createdAt }}<span v-if="p.creator.graduated"><i
               class="mdi mdi-account-school ms-2"></i></span>
@@ -46,19 +59,16 @@ export default {
     }
   },
   setup(props) {
-
-
     function getLikeNames() {
-      const likeNames = []
+      const likeNames = [];
       for (let i = 0; i < props.p.likes.length; i++) {
-        likeNames.push(' ' + props.p.likes[i].name)
+        likeNames.push(" " + props.p.likes[i].name);
       }
-      props.p.likeNames = likeNames
+      props.p.likeNames = likeNames;
     }
-
     onMounted(() => {
-      getLikeNames()
-    })
+      getLikeNames();
+    });
     return {
       likes: computed(() => AppState.likeIds),
       userId: computed(() => AppState.account.id),
@@ -66,32 +76,33 @@ export default {
       profile: computed(() => AppState.activeProfile),
       account: computed(() => AppState.account),
       postLikers: computed(() => AppState.postLikers),
-
       async likePost(postId) {
         try {
           if (AppState.account.id) {
-            await postsService.likePost(postId)
-            getLikeNames()
-          } else {
-            Pop.error('You must be logged in to like posts')
+            await postsService.likePost(postId);
+            getLikeNames();
           }
-        } catch (error) {
-          logger.log(error)
-          Pop.error(error.message)
+          else {
+            Pop.error("You must be logged in to like posts");
+          }
+        }
+        catch (error) {
+          logger.log(error);
+          Pop.error(error.message);
         }
       },
-
       async deletePost(postId) {
         try {
           if (await Pop.confirm("Are you sure you'd like to delete this post?", "This can't be undone!", "Yes, I'm sure", "warning")) {
-            await postsService.deletePost(postId)
+            await postsService.deletePost(postId);
           }
-        } catch (error) {
-          logger.log(error)
-          Pop.error(error.message)
+        }
+        catch (error) {
+          logger.log(error);
+          Pop.error(error.message);
         }
       }
-    }
+    };
   }
 }
 </script>
@@ -111,7 +122,8 @@ export default {
   margin-left: 2.5em;
   background-color: white;
   filter: drop-shadow(0px 0px 7px rgb(91, 89, 89));
-  position: relative
+  position: relative;
+  z-index: 2;
 }
 
 .post-image {
@@ -129,5 +141,13 @@ export default {
   position: absolute;
   right: 0px;
   top: 0px;
+}
+
+li {
+  cursor: pointer;
+}
+
+.blue-text {
+  color: #39C4C6
 }
 </style>

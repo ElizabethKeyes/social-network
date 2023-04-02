@@ -1,7 +1,7 @@
 <template>
   <div class="new-post-card row">
     <div class="col-2 px-0 pt-3 d-flex justify-content-center">
-      <router-link :to="{ name: 'Profile', params: { profileId: user?.id } }">
+      <router-link v-if="user" :to="{ name: 'Profile', params: { profileId: user?.id } }">
         <img :src="user.picture" :alt="'a photo of ' + user.name" class="profile-pic">
       </router-link>
     </div>
@@ -73,7 +73,8 @@ export default {
   filter: drop-shadow(0px 0px 7px rgb(91, 89, 89));
   margin: 1em;
   margin-left: 2.5em;
-  margin-bottom: 2.5em
+  margin-bottom: 2.5em;
+  z-index: 2;
 }
 
 .profile-pic {

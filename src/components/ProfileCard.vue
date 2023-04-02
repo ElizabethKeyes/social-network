@@ -25,7 +25,9 @@
         class="btn btn-outline-light">Edit</button>
     </section>
   </div>
-  <EditProfileModal />
+  <ModalComponent>
+    <EditProfileForm />
+  </ModalComponent>
 </template>
 
 
@@ -34,7 +36,8 @@ import { computed } from "vue";
 import { AppState } from "../AppState.js";
 import { useRouter } from "vue-router";
 import { logger } from "../utils/Logger.js";
-import EditProfileModal from './EditProfileModal.vue'
+import ModalComponent from './ModalComponent.vue'
+import EditProfileForm from "./EditProfileForm.vue";
 
 export default {
   setup() {
@@ -46,7 +49,7 @@ export default {
 
     }
   },
-  components: { EditProfileModal }
+  components: { ModalComponent, EditProfileForm }
 }
 </script>
 
@@ -59,6 +62,7 @@ export default {
   margin-left: 2.5em;
   min-height: 45vh;
   margin-bottom: 1.25em;
+  z-index: 2;
 }
 
 .cover-img {
