@@ -2,9 +2,7 @@
   <div class="sidebar-card">
     <div class="d-flex justify-content-center">
       <h6 v-if="!account?.id">Please login or create an account to access all features</h6>
-      <router-link :to="{ name: 'Profile', params: { profileId: account?.id } }">
-        <img v-if="account?.picture" :src="account?.picture" :alt="'a photo of ' + account?.name" class="profile-pic">
-      </router-link>
+      <img v-if="account?.picture" :src="account?.picture" :alt="'a photo of ' + account?.name" class="profile-pic">
     </div>
     <h5 v-if="account?.class">{{ account?.class }}</h5>
     <h4 class="fw-bold mb-3">{{ account?.name }}</h4>
