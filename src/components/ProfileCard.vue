@@ -9,9 +9,12 @@
         <i v-if="profile?.graduated" class="mdi mdi-account-school text-secondary fs-3 graduate-icon"></i>
       </div>
       <div class="col-12 d-flex justify-content-end pe-5 socials-col">
-        <a v-if="profile?.github" :href="profile?.github"><i class="me-2 text-dark mdi mdi-github fs-2"></i></a>
-        <a v-if="profile?.linkedin" :href="profile?.linkedin"><i class="me-2 text-dark mdi mdi-linkedin fs-2"></i></a>
-        <a v-if="profile?.resume" :href="profile?.resume"><i class="me-2 text-dark mdi mdi-file-document fs-2"></i></a>
+        <a v-if="profile?.github" :href="profile?.github" target="_blank"><i
+            class="me-2 text-dark mdi mdi-github fs-2"></i></a>
+        <a v-if="profile?.linkedin" :href="profile?.linkedin" target="_blank"><i
+            class="me-2 text-dark mdi mdi-linkedin fs-2"></i></a>
+        <a v-if="profile?.resume" :href="profile?.resume" target="_blank"><i
+            class="me-2 text-dark mdi mdi-file-document fs-2"></i></a>
       </div>
       <div class="col-11 card-content">
         <h6 class="mb-0">{{ profile?.class }}</h6>
@@ -70,7 +73,7 @@ export default {
   border-radius: 100%;
   border: solid 2px #39C4C6;
   position: absolute;
-  bottom: 150px;
+  top: 100px;
   left: 20px;
   height: 15vh;
   width: 15vh;
@@ -83,7 +86,7 @@ export default {
   background-color: white;
   border: solid 1px #39C4C6;
   position: absolute;
-  bottom: 150px;
+  top: 185px;
   left: 110px;
   width: 5vh;
   text-align: center;
@@ -93,12 +96,12 @@ export default {
   margin-top: 1em;
   padding-left: 2.5em;
   padding-right: 2.5em;
-  padding-bottom: 2.5em;
+  padding-bottom: 1.5em;
 
 }
 
 .socials-col {
-  min-height: 6vh;
+  min-height: 7vh;
   padding-top: .25em
 }
 

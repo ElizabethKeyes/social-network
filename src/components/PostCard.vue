@@ -6,7 +6,7 @@
           <img class="profile-pic" :src="p.creator.picture" :alt="p.creator.name">
         </router-link>
       </div>
-      <div class="col-10 ps-4 d-flex flex-column justify-content-around">
+      <div class="col-10 mt-3 ps-4 d-flex flex-column justify-content-around">
         <button v-if="userId == p.creator.id" @click="deletePost(p.id)" class="btn delete-button" title="Delete Post"
           type="button"><i class="mdi mdi-delete-outline text-danger fs-4"></i></button>
         <h4>{{ p.creator.name }}</h4>
@@ -36,6 +36,7 @@ import { Post } from "../models/Post.js";
 import { postsService } from "../services/PostsService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
+
 
 export default {
   props: {

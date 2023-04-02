@@ -7,11 +7,11 @@
     <h5 v-if="account?.class">{{ account?.class }}</h5>
     <h4 class="fw-bold mb-3">{{ account?.name }}</h4>
     <div class="d-flex flex-column">
-      <a v-if="account?.github" :href="account?.github" class="text-dark"><i
+      <a v-if="account?.github" :href="account?.github" target="_blank" class="text-dark"><i
           class="mdi mdi-github fs-4 me-2"></i>Github</a>
-      <a v-if="account?.linkedin" :href="account?.linkedin" class="text-dark"><i
+      <a v-if="account?.linkedin" :href="account?.linkedin" target="_blank" class="text-dark"><i
           class="mdi mdi-linkedin fs-4 me-2"></i>LinkedIn</a>
-      <a v-if="account?.resume" :href="account?.resume" class="text-dark"><i
+      <a v-if="account?.resume" :href="account?.resume" target="_blank" class="text-dark"><i
           class="mdi mdi-file-document fs-4 me-2"></i>Resume</a>
     </div>
   </div>
