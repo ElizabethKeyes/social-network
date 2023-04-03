@@ -7,7 +7,6 @@ class PromosService {
   async getPromos() {
     const res = await api.get('/api/ads')
     AppState.promos = res.data.map(p => new Promo(p))
-    logger.log('[CLASSED PROMOS]', AppState.promos)
   }
 }
 

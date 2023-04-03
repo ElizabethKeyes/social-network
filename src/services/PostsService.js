@@ -17,7 +17,6 @@ class PostsService {
     AppState.posts = res.data.posts.map(p => new Post(p))
     AppState.nextPage = res.data.older
     AppState.previousPage = res.data.newer
-    logger.log('[ALL POSTS FROM PROFILE]', res.data)
   }
 
   async changePage(url) {
@@ -30,16 +29,13 @@ class PostsService {
 
   async likePost(postId) {
     const res = await api.post(`/api/posts/${postId}/like`)
-    logger.log('[LIKED POST]', res.data)
     AppState.likeIds = res.data.likeIds
     const index = AppState.posts.findIndex(p => p.id == postId)
     const foundPost = AppState.posts[index]
     AppState.posts.splice(index, 1, new Post(res.data))
-    logger.log('[AFTER SPLICE]', AppState.posts)
   }
 
   async createPost(postData) {
-    logger.log('[POSTDATA]', postData)
     const res = await api.post(`api/posts`, postData)
     AppState.posts.unshift(new Post(res.data))
   }
@@ -58,8 +54,6 @@ class PostsService {
     const res2 = await api.get(`/api/profiles?query=${query}`)
     AppState.searchedProfiles = res2.data.map(p => new Profile(p))
     AppState.posts = res.data.posts.map(p => new Post(p))
-    logger.log('[SEARCHED POSTS]', AppState.posts)
-    logger.log('[SEARCHED PROFILES]', AppState.searchedProfiles)
   }
 
 }
