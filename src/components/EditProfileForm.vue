@@ -56,7 +56,9 @@
 <script>
 import { computed, ref } from "vue";
 import { AppState } from "../AppState.js";
-import { Post } from "../models/Post.js";
+import { logger } from "../utils/Logger.js";
+import Pop from "../utils/Pop.js";
+import { profilesService } from "../services/ProfilesService.js";
 
 export default {
   setup() {
