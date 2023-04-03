@@ -14,9 +14,9 @@
     </div>
     <div class="col-9 d-flex justify-content-around mb-4 mt-3">
       <button :class="{ disabled: previousPage == null }" @click="changePage(previousPage)"
-        class="btn btn-outline-dark">Previous Page</button>
-      <button :class="{ disabled: nextPage == null }" @click="changePage(nextPage)" class="btn btn-outline-dark">Next
-        Page</button>
+        class="btn btn-outline-dark">Newer Posts</button>
+      <button :class="{ disabled: nextPage == null }" @click="changePage(nextPage)" class="btn btn-outline-dark">Older
+        Posts</button>
     </div>
   </section>
 </template>
